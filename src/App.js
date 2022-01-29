@@ -5,6 +5,7 @@
 // TODO: don't forget to do testing
 import React, { useReducer, useState } from 'react'
 import './style.css'
+import './data.js'
 
 // reset clears data after submit
 const formReducer = (state, event) => {
@@ -48,6 +49,28 @@ export default function App() {
 		})
 	}
 
+	const stateNameArray = [
+		{
+			fullStateName: "Alabama",
+			abbrev: "AL"
+		},
+		{
+			fullStateName: "Alaska",
+			abbrev: "AK"
+		},
+		{
+			fullStateName: "Arizona",
+			abbrev: "AZ"
+		},
+		{
+			fullStateName: "Arkansas",
+			abbrev: "AR"
+		}
+	]
+
+	const stateFromAbbrev = abbrev => **user entry** === abbrev ? fullStateName : 'oops that is not a state'
+
+	}
     // value attribute is different from placeholder attribute, placeholder data will disappear on user change/not stored, the user can edit values, placeholders are a guide for the user
 	// ul displays the collected data
     // initial state is an empty object, for a controlled component need the value to be defined by either a value from formData or a a default empty string

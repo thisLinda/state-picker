@@ -1,47 +1,47 @@
 export const STATESNAMES = [
     {
         fullStateName: "Alabama",
-        abbrStateName: "AL"
+        abbrev: "AL"
     },
     {
         fullStateName: "Alaska",
-        abbrStateName: "AK"
+        abbrev: "AK"
     },
     {
         fullStateName: "Arizona",
-        abbrStateName: "AZ"
+        abbrev: "AZ"
     },
     {
         fullStateName: "Arkansas",
-        abbrStateName: "AR"
+        abbrev: "AR"
     },
     {
         fullStateName: "California",
-        abbrStateName: "CA"
+        abbrev: "CA"
     },
     {
         fullStateName: "Colorado",
-        abbrStateName: "CO"
+        abbrev: "CO"
     },
     {
         fullStateName: "Connecticut",
-        abbrStateName: "CT"
+        abbrev: "CT"
     },
     {
         fullStateName: "Delaware",
-        abbrStateName: "DE"
+        abbrev: "DE"
     },
     {
         fullStateName: "District of Columbia",
-        abbrStateName: "DC"
+        abbrev: "DC"
     },
     {
         fullStateName: "Florida",
-        abbrStateName: "FL"
+        abbrev: "FL"
     },
     {
         fullStateName: "Georgia",
-        abbrStateName: "GA"
+        abbrev: "GA"
     } 
 ]
 {/* <option value="">Select</option>
