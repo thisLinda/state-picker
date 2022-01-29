@@ -2,6 +2,7 @@
 // import Form from './Form'
 // import MapTest from './MapTest'
 // useReducer hook is used to create a formData object and a setFormData function
+// TODO: don't forget to do testing
 import React, { useReducer, useState } from 'react'
 import './style.css'
 
@@ -52,6 +53,7 @@ export default function App() {
     // initial state is an empty object, for a controlled component need the value to be defined by either a value from formData or a a default empty string
     // converts user entered data into an array with Object.entries
     //  disabled={submitting} on fieldset & button prevents the form from updating while submitting, can also be used on properties of individual components 
+	// input names of `abbreviation as name` and `state as abbreviation` displays user entry into abbreviation into state field as well
 	return (
 		<div className="wrapper">
 			{/* alert user of form submission */}
@@ -69,7 +71,13 @@ export default function App() {
 			<fieldset disabled={submitting}>
 				<label>
 					<p>Abbreviation</p>
-					<select name="abbreviation" onChange={handleChange} value={formData.abbreviation || ''}>
+					{/* setFormData passed to onChange event handler via handleChange function */}
+					<input
+						name="name"
+						onChange={handleChange}
+						value={formData.name || ''}
+					/>
+					{/* <select name="abbreviation" onChange={handleChange} value={formData.abbreviation || ''}>
 						<option value="">--Select--</option>
 						<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
@@ -124,7 +132,7 @@ export default function App() {
 						<option value="WV">West Virginia</option>
 						<option value="WI">Wisconsin</option>
 						<option value="WY">Wyoming</option>    
-					</select>
+					</select> */}
 				</label>
 			</fieldset>
 			<fieldset disabled={submitting}>
@@ -132,7 +140,11 @@ export default function App() {
 				<label>
 					<p>State</p>
 					{/* setFormData passed to onChange event handler via handleChange function */}
-					<input name="name" onChange={handleChange} value={formData.name || ''}/>
+					<input
+						name="abbreviation"
+						onChange={handleChange}
+						value={formData.name || ''}
+					/>
 				</label>
 			</fieldset>
 			<button type="submit" disabled={submitting}>Submit</button>
