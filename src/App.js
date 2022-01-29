@@ -1,6 +1,7 @@
 // this version of app is working for what it is
 // import Form from './Form'
 // import MapTest from './MapTest'
+// useReducer hook is used to create a formData object and a setFormData function
 import React, { useReducer, useState } from 'react'
 import './style.css'
 
@@ -10,8 +11,6 @@ const formReducer = (state, event) => {
         return {
             name: '',
             abbreviation: '',
-            count: 0,
-            'understand': false,
         }
     }
     return {
@@ -24,10 +23,7 @@ const formReducer = (state, event) => {
 // simulate an API with setTimeout which creates an asynchronous operation to wait before completing similar to a request for external data
 // setState hook for calling setSubmitting when the data is submitted (true) and called again when the timeout is resolved (false)
 export default function App() {
-    // demo pre-fill of form by setting count
-	const [formData, setFormData] = useReducer(formReducer, {
-        count: 16,
-    })
+	const [formData, setFormData] = useReducer(formReducer, {})
 	const [submitting, setSubmitting] = useState(false)
 
 	const handleSubmit = event => {
@@ -45,10 +41,9 @@ export default function App() {
 	// handleChange pulls the data from event.target to create name and value to be used in formReducer
 	// without specific checkbox value it will always be "on"
 	const handleChange = event => {
-		const isCheckbox = event.target.type === 'checkbox'
 		setFormData({
 			name: event.target.name,
-			value: isCheckbox ? event.target.checked : event.target.value
+			value: event.target.value
 		})
 	}
 
@@ -59,7 +54,6 @@ export default function App() {
     //  disabled={submitting} on fieldset & button prevents the form from updating while submitting, can also be used on properties of individual components 
 	return (
 		<div className="wrapper">
-			<h1>How About Those States?</h1>
 			{/* alert user of form submission */}
 			{submitting &&
 				<div>
@@ -73,19 +67,10 @@ export default function App() {
 			}
 			<form onSubmit={handleSubmit}>
 			<fieldset disabled={submitting}>
-				{/* using label tag for accessibility with screen readers, it associates the label with the input */}
-				<label>
-					<p>State</p>
-					{/* setFormData passed to onChange event handler via handleChange function */}
-					<input name="name" onChange={handleChange} value={formData.name || ''}/>
-				</label>
-			</fieldset>
-			<fieldset disabled={submitting}>
 				<label>
 					<p>Abbreviation</p>
 					<select name="abbreviation" onChange={handleChange} value={formData.abbreviation || ''}>
-						<option value="">--Please choose an option--</option>
-						<option value="">Select</option>
+						<option value="">--Select--</option>
 						<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
 						<option value="AZ">Arizona</option>
@@ -141,19 +126,13 @@ export default function App() {
 						<option value="WY">Wyoming</option>    
 					</select>
 				</label>
+			</fieldset>
+			<fieldset disabled={submitting}>
+				{/* using label tag for accessibility with screen readers, it associates the label with the input */}
 				<label>
-					<p>Count</p>
-					<input type="number" name="count" onChange={handleChange} step="1" value={formData.count || ''}/>
-				</label>
-				<label>
-					<p>Did I Finally Get This?</p>
-					<input
-                        checked={formData['understand'] || false}
-                        // disabled={formData.abbreviation !== 'ME'}
-                        name="understand"
-                        onChange={handleChange}
-                        type="checkbox"
-                    />
+					<p>State</p>
+					{/* setFormData passed to onChange event handler via handleChange function */}
+					<input name="name" onChange={handleChange} value={formData.name || ''}/>
 				</label>
 			</fieldset>
 			<button type="submit" disabled={submitting}>Submit</button>
